@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/myStyle.css" />
+    <link rel="icon" href="img/icons/favicon.ico" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+      defer
+    ></script>
+    <script src="./js/auth.js" defer></script>
+
+    <title>Fruit</title>
+  </head>
+
+  <body>
+    <div id="modalAuth" class="modalWindow">
+      <div class="modalWindow__block">
+        <h1>Регистрация / авторизация</h1>
+
+        <form id="authForm">
+          <input name="name" type="text" placeholder="Введите имя" />
+          <input name="email" type="email" placeholder="Введите email" />
+          <input name="phone" type="tel" placeholder="Введите телефон" />
+          <input name="password" type="password" placeholder="Введите пароль" />
+          <button type="submit">Войти</button>
+        </form>
+
+        <button id="closeBtnAuth">Закрыть</button>
+      </div>
+    </div>
+
+    <div id="modalProduct" class="modalWindow">
+      <div class="productModal">
+        <h3>Яблоки</h3>
+        <h4>Вес</h4>
+        <div>
+          <button>Купить</button>
+          <div class="price">199р</div>
+        </div>
+        <button id="productBtnClose">Х</button>
+      </div>
+    </div>
+
+    <div id="cartModal" class="modalWindow">
+      <div class="productModal">
+        <h3>Корзина</h3>
+        <div id="cartItems"></div>
+        <button id="cartBtnClose">Закрыть</button>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="header__bg">
+        <div class="container">
+          <div class="header__up">
+            <h1 class="logo">Fru<span>i</span>t</h1>
+            <div id="userName"></div>
+            <nav class="navigation">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="">Categories</a></li>
+                <li><a href="">About Us</a></li>
+              </ul>
+            </nav>
+
+            <div class="buttons">
+              <button class="contactUs btn-animaiton">Contact Us</button>
+
+              <button id="openCart" class="header__btn btn-animaiton cart">
+                <img src="img/icons/basket.svg" alt="" />
+                <span id="cartCount" class="cart-count">0</span>
+              </button>
+              <button class="header__btn btn-animaiton">
+                <img src="img/icons/loop.svg" alt="" />
+              </button>
+
+              <button id="profile" class="header__btn btn-animaiton">
+                <img src="img/icons/user.png" alt="" />
+              </button>
+            </div>
+
+            <div class="burger-menu">
+              <span class="burger__line"></span>
+              <span class="burger__line"></span>
+              <span class="burger__line"></span>
+              <span class="burger__line"></span>
+            </div>
+
+            <div class="of">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Basket</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="header__main">
+            <div class="header__main_text">
+              <h2 class="header__title">
+                <span>Organic</span><br />Healthy Fresh<br />Food For You<span
+                  >.</span
+                >
+              </h2>
+              <p class="subtitle">
+                There are many variations of passages of Lorem Ipsum available,
+                but the majority have suffered alteration
+              </p>
+              <button class="btn__order btn-animaiton">
+                <p>Order Now</p>
+                <img src="img/icons/arrow.svg" alt="" />
+              </button>
+            </div>
+
+            <img class="header__main_img" src="img/pic/mainImg.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="featured_product">
+        <div class="container">
+          <h2 class="title_featured">Featured Product</h2>
+
+          <div class="grid__container">
+            <div class="card">
+              <div class="img_bg bg_banan">
+                <img src="img/pic/banana.png" alt="banana" />
+              </div>
+              <div class="main_info">
+                <h3 class="card-name">Ripe Yellow Banana</h3>
+                <p class="coast">$2.89</p>
+              </div>
+              <div class="footer_info">
+                <p class="weight">500g</p>
+                <button class="btn-buy btn-animaiton">Buy</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img_bg bg-pomegranate">
+                <img src="img/pic/pomegranata.png" alt="pomegranata" />
+              </div>
+              <div class="main_info">
+                <h3 class="card-name">Red Pomegranate</h3>
+                <p class="coast">$3.89</p>
+              </div>
+              <div class="footer_info">
+                <p class="weight">500g</p>
+                <button class="btn-buy btn-animaiton">Buy</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img_bg bg-orange">
+                <img src="img/pic/orange.png" alt="orange" />
+              </div>
+              <div class="main_info">
+                <h3 class="card-name">Sweet Orange</h3>
+                <p class="coast">$2.89</p>
+              </div>
+              <div class="footer_info">
+                <p class="weight">500g</p>
+                <button class="btn-buy btn-animaiton">Buy</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img_bg bg-avacado">
+                <img src="img/pic/avacado.png" alt="avacado" />
+              </div>
+              <div class="main_info">
+                <h3 class="card-name">Tasty Avocado</h3>
+                <p class="coast">$3.89</p>
+              </div>
+              <div class="footer_info">
+                <p class="weight">500g</p>
+                <button class="btn-buy btn-animaiton">Buy</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img_bg bg-redApple">
+                <img src="img/pic/redApple.png" alt="redApple" />
+              </div>
+              <div class="main_info">
+                <h3 class="card-name">Ripe red apples</h3>
+                <p class="coast">$5.89</p>
+              </div>
+              <div class="footer_info">
+                <p class="weight">500g</p>
+                <button class="btn-buy btn-animaiton">Buy</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img_bg bg-greenApple">
+                <img src="img/pic/greenApple.png" alt="greenApple" />
+              </div>
+              <div class="main_info">
+                <h3 class="card-name">Ripe Green Apple</h3>
+                <p class="coast">$1.89</p>
+              </div>
+              <div class="footer_info">
+                <p class="weight">500g</p>
+                <button id="банын" class="btn-buy btn-animaiton">Buy</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img_bg bg-strawbarry">
+                <img src="img/pic/strawbarry.png" alt="strawbarry" />
+              </div>
+              <div class="main_info">
+                <h3 class="card-name">Sweet Strawberry</h3>
+                <p class="coast">$5.89</p>
+              </div>
+              <div class="footer_info">
+                <p class="weight">500g</p>
+                <button class="btn-buy btn-animaiton">Buy</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="img_bg bg-watemelon">
+                <img src="img/pic/watemelon.png" alt="watemelon" />
+              </div>
+              <div class="main_info">
+                <h3 class="card-name">Tasty Watemelon</h3>
+                <p class="coast">$6.89</p>
+              </div>
+              <div class="footer_info">
+                <p class="weight">500g</p>
+                <button class="btn-buy btn-animaiton">Buy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="howItWork">
+        <div class="container container__howItWorks">
+          <div class="img__block">
+            <div class="human__img">
+              <img class="img__woman" src="img/pic/woman.png" alt="" />
+              <img class="img__man" src="img/pic/man.png" alt="" />
+            </div>
+
+            <div class="food__img">
+              <img
+                class="img__vegetables"
+                src="img/pic/vegetables.png"
+                alt=""
+              />
+              <img class="img__oranges" src="img/pic/moreOrange.png" alt="" />
+            </div>
+          </div>
+
+          <div class="info__block">
+            <h3 class="title__works">How it Works</h3>
+
+            <p class="subtitle__works">
+              Lorem Ipsum is simply dummy text of the printi and typesetting
+              industry. Lorem Ipsum has been the industry's
+            </p>
+
+            <div class="works__list">
+              <div class="list-item">
+                <div class="basket__circle circle">
+                  <img src="img/icons/basket-white.svg" alt="" />
+                </div>
+                <div class="text-item">
+                  <h4>Choose Product</h4>
+                  <p>Lorem Ipsum is simply dummy text of the printi</p>
+                </div>
+              </div>
+
+              <div class="list-item">
+                <div class="doPayment__circle circle">
+                  <img src="img/icons/doPayment.svg" alt="" />
+                </div>
+                <div class="text-item">
+                  <h4>Do Payment</h4>
+                  <p>Lorem Ipsum is simply dummy text of the printi</p>
+                </div>
+              </div>
+
+              <div class="list-item">
+                <div class="confirmation__circle circle">
+                  <img src="img/icons/confirmation.svg" alt="" />
+                </div>
+                <div class="text-item">
+                  <h4>Confirmation Payment</h4>
+                  <p>Lorem Ipsum is simply dummy text of the printi</p>
+                </div>
+              </div>
+
+              <div class="list-item">
+                <div class="shipped__circle circle">
+                  <img src="img/icons/shipped.svg" alt="" />
+                </div>
+                <div class="text-item">
+                  <h4>Order Shipped</h4>
+                  <p>Lorem Ipsum is simply dummy text of the printi</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="aboutUs">
+        <div class="container aboutUs__container">
+          <div class="info_aboutUs">
+            <h4 class="title__aboutUs">Aboud Us</h4>
+            <p>
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alterationThere are many variations
+              of passages of Lorem Ipsum available, but the majority have
+              suffered alteration
+            </p>
+            <button class="read-more btn-animaiton">Read More</button>
+          </div>
+
+          <img
+            class="img__aboutUs"
+            src="img/pic/moreOrangesYellowAndRad.png"
+            alt="#"
+          />
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__container">
+        <div class="flex-container">
+          <div class="main-info__footer">
+            <h5 class="footer-title"><a href="">Fruit</a></h5>
+            <p>
+              Lorem Ipsum is simply dummy typesetting industry. Lorem Ipsum has
+              been the industry's standard
+            </p>
+            <div>
+              <ul class="social-media">
+                <li>
+                  <a href="#"
+                    ><img src="img/icons/facebook.svg" alt="facebook" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><img src="img/icons/twitter.svg" alt="twitter"
+                  /></a>
+                </li>
+                <li>
+                  <a href="#"><img src="img/icons/in.svg" alt="linkidin" /></a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><img src="img/icons/youtube.svg" alt="youtube"
+                  /></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="community">
+            <h5 class="footer__title">Community</h5>
+            <ul class="community-info">
+              <li><a href="#">For Agents</a></li>
+              <li><a href="#">For Seller</a></li>
+              <li><a href="#">For Buyer</a></li>
+              <li><a href="#">Search home</a></li>
+            </ul>
+          </div>
+          <div class="about">
+            <h5 class="footer__title">About</h5>
+            <ul class="about-info">
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Meet the Team</a></li>
+            </ul>
+          </div>
+          <div class="contact">
+            <h5 class="footer__title">Contact</h5>
+            <ul class="contact-info">
+              <li><a href="#">29/A Berden Street</a></li>
+              <li><a href="#">Simply random text</a></li>
+              <li>
+                <a href="#"
+                  >It has roots in a piece of<br />classical latin from 45</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyrights">© 2021 Real State All Rights Reserved.</div>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
+
+<!-- 
+
+Сделать открытие модалки товара при клике на кнопку просмотра
+
+Для input'ы для авторизации:
+-имя 
+-email
+-телефон
+-пароль
+-кнопка войти
+
+У модалки товара:
+-название
+-описание
+-цена
+-кнопка купить
+-картинки(добавим на уроке)
+
+
+-->

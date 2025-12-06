@@ -1,0 +1,50 @@
+.modalWindow {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 999;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalWindow__block {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 400px;
+}
+
+.modalOpen {
+  display: flex;
+}
+
+.productModal {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: green;
+  width: 600px;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 12px;
+  background: red;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
