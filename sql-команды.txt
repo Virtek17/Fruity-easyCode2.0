@@ -1,0 +1,41 @@
+SELECT — выборка данных
+
+-- Выбрать все столбцы из таблицы
+SELECT * FROM users;
+
+-- Выбрать конкретные столбцы
+SELECT name, email FROM users;
+
+-- С условиями (фильтрация)
+SELECT * FROM users WHERE age > 18;
+
+-- С сортировкой
+SELECT * FROM users ORDER BY created_at DESC;
+
+-- Ограничение количества строк
+SELECT * FROM users LIMIT 10;
+
+-- Подсчёт строк
+SELECT COUNT(*) FROM users;
+
+===============================================
+INSERT - Вставка данных
+
+-- Вставить одну запись
+INSERT INTO users (name, email, age)
+VALUES ('Илья', 'ilya@example.com', 22);
+
+-- Вставить несколько записей
+INSERT INTO users (name, email)
+VALUES 
+  ('Анна', 'anna@example.com'),
+  ('Макс', 'max@example.com');
+
+==============================================
+DELETE - Удаление данных
+
+-- Удалить все записи (осторожно!)
+DELETE FROM users;
+
+-- Удалить с условием
+DELETE FROM users WHERE id = 123;

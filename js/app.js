@@ -79,42 +79,15 @@ function addToCart(product) {
   saveCart();
   updateCartCounter();
 }
-// корзина
-const cartModal = document.getElementById("cartModal");
-const cartItems = document.getElementById("cartItems");
-const cartBtnClose = document.getElementById("cartBtnClose");
-const openCart = document.getElementById("openCart");
-const cartCount = document.getElementById("cartCount");
 
-function updateCartCounter() {
-  const total = cart.reduce((sum, item) => sum + item.count, 0);
-  cartCount.textContent = total;
-}
+const btnSignin = document.getElementById("signin");
+const modalSignin = document.getElementById("modalSignin");
+const closeSignin = document.getElementById("closeBtnSignin");
 
-updateCartCounter();
-
-openCart.addEventListener("click", () => {
-  renderCart();
-  cartModal.classList.add("modalOpen");
+btnSignin.addEventListener("click", () => {
+  modalSignin.classList.add("modalOpen");
 });
 
-cartBtnClose.addEventListener("click", () => {
-  cartModal.classList.remove("modalOpen");
+closeSignin.addEventListener("click", () => {
+  modalSignin.classList.remove("modalOpen");
 });
-
-function renderCart() {
-  if (cart.length === 0) {
-    cartItems.innerHTML = "<p>Корзина пустая</p>";
-    return;
-  }
-
-  cartItems.innerHTML = cart
-    .map(
-      (item) => `
-    <div class="cart-item">
-      <b>${item.name}</b> — ${item.price} (${item.weight}) × ${item.count}
-    </div>
-  `
-    )
-    .join("");
-}

@@ -28,9 +28,25 @@
   <body>
     <div id="modalAuth" class="modalWindow">
       <div class="modalWindow__block">
-        <h1>Регистрация / авторизация</h1>
+        <h1>Регситрация</h1>
 
-        <form id="authForm">
+        <form id="AuthForm">
+          <input name="name" type="text" placeholder="Введите имя" />
+          <input name="email" type="email" placeholder="Введите email" />
+          <input name="phone" type="tel" placeholder="Введите телефон" />
+          <input name="password" type="password" placeholder="Введите пароль" />
+          <button type="submit">Зарегистрироваться</button>
+        </form>
+
+        <button id="closeBtnAuth">Закрыть</button>
+      </div>
+    </div>
+
+    <div id="modalSignin" class="modalWindow">
+      <div class="modalWindow__block">
+        <h1>Войти</h1>
+
+        <form id="signinForm">
           <input name="name" type="text" placeholder="Введите имя" />
           <input name="email" type="email" placeholder="Введите email" />
           <input name="phone" type="tel" placeholder="Введите телефон" />
@@ -38,7 +54,7 @@
           <button type="submit">Войти</button>
         </form>
 
-        <button id="closeBtnAuth">Закрыть</button>
+        <button id="closeBtnSignin" type="submit">Закрыть</button>
       </div>
     </div>
 
@@ -60,10 +76,6 @@
         <div id="cartItems"></div>
         <button id="cartBtnClose">Закрыть</button>
       </div>
-    </div>
-
-    <div>
-      <h1>Регистрация</h1>
     </div>
 
     <header class="header">
@@ -93,6 +105,10 @@
 
               <button id="profile" class="header__btn btn-animaiton">
                 <img src="img/icons/user.png" alt="" />
+              </button>
+
+              <button id="signin" class="header__btn btn-animaiton">
+                Войти
               </button>
             </div>
 
